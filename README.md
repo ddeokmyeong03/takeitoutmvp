@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # firstapp_food_project_001
 
 foodapp test ver 1.0
@@ -14,3 +15,6 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter development, view the
 [online documentation](https://docs.flutter.dev/), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+=======
+Developing...
+>>>>>>> 157af0ac2c1c03e13f319989d87d9aeb770205aa
