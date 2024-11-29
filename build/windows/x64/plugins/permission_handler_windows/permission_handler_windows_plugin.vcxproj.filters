@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\jdm03\AndroidStudioProjects\firstapp_food_project_001\windows\flutter\ephemeral\.plugin_symlinks\permission_handler_windows\windows\permission_handler_windows_plugin.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Users\jdm03\AndroidStudioProjects\firstapp_food_project_001\windows\flutter\ephemeral\.plugin_symlinks\permission_handler_windows\windows\include\permission_handler_windows\permission_handler_windows_plugin.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\jdm03\AndroidStudioProjects\firstapp_food_project_001\windows\flutter\ephemeral\.plugin_symlinks\permission_handler_windows\windows\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{4FCE7558-CA1B-3550-B76C-977528BFFFE0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{7B8F9A49-2A32-32A8-9088-EE6318F85755}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

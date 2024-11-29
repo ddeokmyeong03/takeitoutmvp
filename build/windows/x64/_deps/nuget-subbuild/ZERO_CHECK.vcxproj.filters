@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\jdm03\AndroidStudioProjects\firstapp_food_project_001\build\windows\x64\_deps\nuget-subbuild\CMakeFiles\f8ea10778b8e6fd2df2a7d26e9cc64d7\generate.stamp.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{CE82E001-D52B-3822-ACD8-E35ECD6EBCD8}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

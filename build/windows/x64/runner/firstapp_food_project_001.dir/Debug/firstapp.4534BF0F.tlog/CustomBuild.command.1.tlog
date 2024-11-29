@@ -1,0 +1,10 @@
+^C:\USERS\JDM03\ANDROIDSTUDIOPROJECTS\FIRSTAPP_FOOD_PROJECT_001\WINDOWS\RUNNER\CMAKELISTS.TXT
+setlocal
+"C:\Program Files (x86)\Microsoft Visual Studio\2019\BuildTools\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/jdm03/AndroidStudioProjects/firstapp_food_project_001/windows -BC:/Users/jdm03/AndroidStudioProjects/firstapp_food_project_001/build/windows/x64 --check-stamp-file C:/Users/jdm03/AndroidStudioProjects/firstapp_food_project_001/build/windows/x64/runner/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

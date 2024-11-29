@@ -1,0 +1,15 @@
+# Target labels
+ nuget-populate
+# Source files and their labels
+C:/Users/jdm03/AndroidStudioProjects/firstapp_food_project_001/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/nuget-populate
+C:/Users/jdm03/AndroidStudioProjects/firstapp_food_project_001/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/f8ea10778b8e6fd2df2a7d26e9cc64d7/nuget-populate.rule
+C:/Users/jdm03/AndroidStudioProjects/firstapp_food_project_001/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/ea9e2078d61bbb3c5a2045129221a68e/nuget-populate-complete.rule
+C:/Users/jdm03/AndroidStudioProjects/firstapp_food_project_001/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/b1107f8873f7c64486df0e0d2c37b509/nuget-populate-build.rule
+C:/Users/jdm03/AndroidStudioProjects/firstapp_food_project_001/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/b1107f8873f7c64486df0e0d2c37b509/nuget-populate-configure.rule
+C:/Users/jdm03/AndroidStudioProjects/firstapp_food_project_001/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/b1107f8873f7c64486df0e0d2c37b509/nuget-populate-copyfile.rule
+C:/Users/jdm03/AndroidStudioProjects/firstapp_food_project_001/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/b1107f8873f7c64486df0e0d2c37b509/nuget-populate-download.rule
+C:/Users/jdm03/AndroidStudioProjects/firstapp_food_project_001/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/b1107f8873f7c64486df0e0d2c37b509/nuget-populate-install.rule
+C:/Users/jdm03/AndroidStudioProjects/firstapp_food_project_001/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/b1107f8873f7c64486df0e0d2c37b509/nuget-populate-mkdir.rule
+C:/Users/jdm03/AndroidStudioProjects/firstapp_food_project_001/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/b1107f8873f7c64486df0e0d2c37b509/nuget-populate-patch.rule
+C:/Users/jdm03/AndroidStudioProjects/firstapp_food_project_001/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/b1107f8873f7c64486df0e0d2c37b509/nuget-populate-test.rule
+C:/Users/jdm03/AndroidStudioProjects/firstapp_food_project_001/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/b1107f8873f7c64486df0e0d2c37b509/nuget-populate-update.rule

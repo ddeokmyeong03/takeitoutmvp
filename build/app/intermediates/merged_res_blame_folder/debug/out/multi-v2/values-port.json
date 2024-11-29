@@ -1,0 +1,19 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.example.firstapp_food_project_001.app-mergeDebugResources-36:/values-port/values-port.xml",
+            "map": [
+                {
+                    "source": "C:\\Users\\jdm03\\.gradle\\caches\\transforms-3\\e8527778268611c54c3ff12cca4b0e0b\\transformed\\appcompat-1.6.1\\res\\values-port\\values-port.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "55",
+                        "endOffsets": "106"
+                    }
+                }
+            ]
+        }
+    ]
+}

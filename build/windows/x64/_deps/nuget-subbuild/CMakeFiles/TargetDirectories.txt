@@ -1,0 +1,3 @@
+C:/Users/jdm03/AndroidStudioProjects/firstapp_food_project_001/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/nuget-populate.dir
+C:/Users/jdm03/AndroidStudioProjects/firstapp_food_project_001/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/ALL_BUILD.dir
+C:/Users/jdm03/AndroidStudioProjects/firstapp_food_project_001/build/windows/x64/_deps/nuget-subbuild/CMakeFiles/ZERO_CHECK.dir
