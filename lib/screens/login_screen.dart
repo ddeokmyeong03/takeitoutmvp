@@ -1,128 +1,101 @@
+import 'package:firstapp_food_project_001/providers/auth_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart'; // 세션 관리
+import '../services/auth_service.dart';
 
-class LogInScreen extends StatefulWidget {
+class LoginScreen extends StatefulWidget {
   @override
-  State<LogInScreen> createState() => _LogInScreenState();
+  _LoginScreenState createState() => _LoginScreenState();
 }
 
-class _LogInScreenState extends State<LogInScreen> {
+class _LoginScreenState extends State<LoginScreen> {
   final TextEditingController emailController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+  final AuthService _authService = AuthService();
+
+  bool isLoading = false;
+
+  void login() async {
+    setState(() {
+      isLoading = true;
+    });
+
+    final email = emailController.text.trim();
+    final password = passwordController.text.trim();
+
+    if (email.isEmpty || password.isEmpty) {
+      setState(() {
+        isLoading = false;
+      });
+      showMessage("이메일과 비밀번호를 입력하세요.");
+      return;
+    }
+
+    final result = await _authService.login(email, password);
+
+    setState(() {
+      isLoading = false;
+    });
+
+    // 로그인 성공 후 AuthProvider 업데이트
+    if (result['status'] == 'success') {
+      final prefs = await SharedPreferences.getInstance();
+      await prefs.setInt('user_id', result['user_id']);
+      await prefs.setString('username', result['username']);
+
+      Provider.of<AuthProvider>(context, listen: false)
+          .login(result['user_id'], result['username']);
+
+      showMessage("환영합니다, ${result['username']}님!");
+      Navigator.pushReplacementNamed(context, '/home');
+    } else {
+      showMessage(result['message']);
+    }
+  }
+
+  void showMessage(String message) {
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text(message)));
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('로그인'),
-        elevation: 0.0,
-        backgroundColor: Colors.teal,
-        centerTitle: true,
-      ),
-      body: GestureDetector(
-        onTap: () {
-          FocusScope.of(context).unfocus(); // 화면 탭 시 키보드 닫기
-        },
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              Padding(padding: EdgeInsets.only(top: 50)),
-              Center(
-                child: Icon(
-                  Icons.lock_outline,
-                  size: 100,
-                  color: Colors.teal,
-                ),
-              ),
-              SizedBox(height: 20),
-              Text(
-                'My Fridge App',
-                style: TextStyle(
-                  fontSize: 24,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.teal,
-                ),
-              ),
-              SizedBox(height: 20),
-              Form(
-                child: Theme(
-                  data: ThemeData(
-                    primaryColor: Colors.grey,
-                    inputDecorationTheme: InputDecorationTheme(
-                      labelStyle: TextStyle(color: Colors.teal, fontSize: 15.0),
-                    ),
+      appBar: AppBar(title: Text('로그인')),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            TextField(
+              controller: emailController,
+              decoration: InputDecoration(labelText: '이메일'),
+              keyboardType: TextInputType.emailAddress,
+            ),
+            SizedBox(height: 16),
+            TextField(
+              controller: passwordController,
+              decoration: InputDecoration(labelText: '비밀번호'),
+              obscureText: true,
+            ),
+            SizedBox(height: 32),
+            isLoading
+                ? Center(child: CircularProgressIndicator())
+                : ElevatedButton(
+                    onPressed: login,
+                    child: Text('로그인'),
                   ),
-                  child: Container(
-                    padding: EdgeInsets.all(40.0),
-                    child: Builder(builder: (context) {
-                      return Column(
-                        children: [
-                          TextField(
-                            controller: emailController,
-                            decoration: InputDecoration(labelText: '이메일 입력'),
-                            keyboardType: TextInputType.emailAddress,
-                          ),
-                          SizedBox(height: 16),
-                          TextField(
-                            controller: passwordController,
-                            decoration: InputDecoration(labelText: '비밀번호 입력'),
-                            keyboardType: TextInputType.text,
-                            obscureText: true, // 비밀번호 가리기
-                          ),
-                          SizedBox(height: 40.0),
-                          ElevatedButton(
-                            onPressed: () {
-                              handleLogin(context);
-                            },
-                            child: Row(
-                              mainAxisSize: MainAxisSize.min,
-                              children: [
-                                Text('로그인'),
-                                SizedBox(width: 8),
-                                Icon(Icons.arrow_forward),
-                              ],
-                            ),
-                            style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.teal,
-                              textStyle: TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ),
-                        ],
-                      );
-                    }),
-                  ),
-                ),
-              )
-            ],
-          ),
+            TextButton(
+              onPressed: () {
+                Navigator.pushNamed(context, '/register');
+              },
+              child: Text('회원가입'),
+            ),
+          ],
         ),
       ),
     );
-  }
-
-  void handleLogin(BuildContext context) {
-    final email = emailController.text.trim();
-    final password = passwordController.text.trim();
-
-    // 간단한 로그인 로직
-    if (email == 'test@myfridge.com' && password == '1234') {
-      Navigator.pushReplacementNamed(context, '/home');
-    } else if (email == 'test@myfridge.com' && password != '1234') {
-      showSnackBar(context, Text('비밀번호가 잘못되었습니다.'));
-    } else if (email != 'test@myfridge.com' && password == '1234') {
-      showSnackBar(context, Text('이메일이 잘못되었습니다.'));
-    } else {
-      showSnackBar(context, Text('이메일과 비밀번호를 다시 확인해주세요.'));
-    }
-  }
-
-  void showSnackBar(BuildContext context, Text message) {
-    final snackBar = SnackBar(
-      content: message,
-      backgroundColor: Colors.redAccent,
-    );
-    ScaffoldMessenger.of(context).showSnackBar(snackBar);
   }
 }

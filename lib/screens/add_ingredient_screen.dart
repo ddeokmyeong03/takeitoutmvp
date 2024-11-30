@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
 import 'package:image_picker/image_picker.dart';
-import '../services/db_service.dart'; // 데이터베이스 서비스
+import '../services/ingredient_service.dart'; // 식재료 서비스
 import '../services/ocr_service.dart'; // OCR 서비스
 
 class AddIngredientScreen extends StatefulWidget {
+  final int userId;
+
+  const AddIngredientScreen({required this.userId, Key? key}) : super(key: key);
+
   @override
   _AddIngredientScreenState createState() => _AddIngredientScreenState();
 }
@@ -16,6 +20,7 @@ class _AddIngredientScreenState extends State<AddIngredientScreen> {
   String? selectedStorage;
   File? selectedImage;
   final OCRService ocrService = OCRService();
+  final IngredientService ingredientService = IngredientService();
 
   Future<void> pickImageAndExtractDate() async {
     final picker = ImagePicker();
@@ -49,25 +54,34 @@ class _AddIngredientScreenState extends State<AddIngredientScreen> {
       return;
     }
 
-    final db = DatabaseService();
-    await db.insertIngredient({
-      'name': nameController.text,
-      'storage': selectedStorage,
-      'expiryDate': expiryDateController.text,
-    });
+    try {
+      final result = await ingredientService.addIngredient(
+        name: nameController.text,
+        storage: selectedStorage!,
+        expiryDate: expiryDateController.text,
+        userId: widget.userId,
+      );
 
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text('식재료가 저장되었습니다.')),
-    );
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(result)),
+      );
 
-    Navigator.pop(context, true); // HomeScreen으로 데이터 갱신 신호
+      if (result.contains('성공적으로')) {
+        Navigator.pop(context, true); // 데이터 갱신 신호
+      }
+    } catch (e) {
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text('식재료 추가 중 오류가 발생했습니다.')),
+      );
+    }
   }
 
   @override
   Widget build(BuildContext context) {
+    // ignore: deprecated_member_use
     return WillPopScope(
       onWillPop: () async {
-        Navigator.pop(context, false); // 데이터 갱신 신호 없이 HomeScreen으로 돌아감
+        Navigator.pop(context, false); // 데이터 갱신 신호 없이 돌아감
         return false; // 기본 뒤로가기 동작을 무시
       },
       child: Scaffold(

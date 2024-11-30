@@ -1,7 +1,7 @@
 {
     "name": "firstapp_food_project_001",
     "short_name": "firstapp_food_project_001",
-    "start_url": ".",
+    "start_url": "/takeitoutmvp/",
     "display": "standalone",
     "background_color": "#0175C2",
     "theme_color": "#0175C2",
